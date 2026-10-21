@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1A4D2E">
+<title>Duckett Door Codes</title>
+<style>
+:root{
+  --dark:#1A4D2E; --mid:#2E7D4F; --pale:#E8F3EC; --line:#C9DCCF; --bg:#F6FAF7;
+  --ink:#14231A; --muted:#5B6F62; --warn:#FFF3CD; --warnink:#8A5A00; --white:#fff;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+body{padding-bottom:env(safe-area-inset-bottom,0px)}
+.hidden{display:none!important}
+button{font:inherit;cursor:pointer}
+/* lock screen */
+#lock{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(160deg,var(--dark),var(--mid))}
+.lockcard{background:var(--white);border-radius:20px;padding:28px 24px;width:100%;max-width:380px;box-shadow:0 20px 50px rgba(0,0,0,.25);text-align:center}
+.mark{width:56px;height:56px;border-radius:16px;background:var(--dark);color:#fff;font-weight:800;font-size:28px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.lockcard h1{margin:0 0 4px;font-size:22px;color:var(--dark)}
+.lockcard p{margin:0 0 18px;color:var(--muted);font-size:14px}
+.lockcard input{width:100%;padding:14px;border:2px solid var(--line);border-radius:12px;font-size:17px;outline:none}
+.lockcard input:focus{border-color:var(--mid)}
+.btn{background:var(--dark);color:#fff;border:0;border-radius:12px;padding:14px 18px;font-weight:700;font-size:16px}
+.btn:active{background:var(--mid)}
+.lockcard .btn{width:100%;margin-top:12px}
+#err{color:#B00020;font-size:14px;min-height:20px;margin-top:10px}
+/* app */
+header{position:sticky;top:0;z-index:10;background:var(--dark);color:#fff;padding:calc(env(safe-area-inset-top,0px) + 12px) 14px 12px}
+.top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.top .mark{width:36px;height:36px;font-size:18px;border-radius:10px;margin:0;background:var(--mid)}
+.top .ttl{flex:1;line-height:1.15}
+.top .ttl b{font-size:17px;display:block}
+.top .ttl span{font-size:12px;opacity:.8}
+.ibtn{background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:10px;padding:9px 12px;font-weight:600;font-size:14px}
+.ibtn.on{background:#fff;color:var(--dark)}
+#q{width:100%;padding:13px 14px;border-radius:12px;border:0;font-size:17px;outline:none}
+.chips{display:flex;gap:8px;margin-top:10px;align-items:center;flex-wrap:wrap}
+.chip{background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:999px;padding:7px 14px;font-size:14px;font-weight:600}
+.chip.on{background:#fff;color:var(--dark)}
+.pill{background:var(--warn);color:var(--warnink);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700;border:0}
+main{max-width:720px;margin:0 auto;padding:14px 12px 90px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:12px;overflow:hidden}
+.chead{display:flex;align-items:center;gap:10px;padding:13px 14px;background:var(--pale);border-bottom:1px solid var(--line)}
+.chead h2{margin:0;font-size:17px;color:var(--dark);flex:1}
+.badge{background:var(--warn);color:var(--warnink);font-size:12px;font-weight:700;border-radius:999px;padding:4px 9px}
+.row{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid #EAF1EC}
+.row:last-child{border-bottom:0}
+.row .l{flex:1;min-width:0}
+.row .l b{display:block;font-size:15px}
+.row .l small{display:block;color:var(--muted);font-size:13px;margin-top:2px;overflow-wrap:anywhere}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:21px;font-weight:800;color:var(--dark);background:var(--pale);border:0;border-radius:10px;padding:8px 12px;max-width:55%;overflow-wrap:anywhere;text-align:right}
+.code:active{background:var(--line)}
+.need{background:var(--warn);color:var(--warnink);font-size:13px;font-weight:800;border-radius:10px;padding:9px 12px}
+.row{cursor:pointer}
+.row:active{background:var(--pale)}
+.chev{color:#9DB5A5;font-size:22px;line-height:1;padding-left:2px}
+.plus{background:var(--mid);color:#fff;border:0;border-radius:10px;width:34px;height:34px;font-size:22px;font-weight:700;line-height:1}
+.dots{background:none;border:0;color:var(--muted);font-size:22px;font-weight:800;padding:4px 8px}
+.empty{text-align:center;color:var(--muted);padding:40px 10px}
+#fab{position:fixed;right:18px;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);width:62px;height:62px;border-radius:50%;background:var(--dark);color:#fff;border:0;font-size:34px;font-weight:300;box-shadow:0 8px 22px rgba(0,0,0,.3);z-index:20}
+#fab:active{background:var(--mid)}
+#sheet{position:fixed;inset:0;z-index:40;background:rgba(10,30,18,0);display:flex;align-items:flex-end;justify-content:center;pointer-events:none;transition:background .2s}
+#sheet.open{background:rgba(10,30,18,.5);pointer-events:auto}
+#sbox{background:#fff;width:100%;max-width:560px;border-radius:22px 22px 0 0;padding:10px 18px calc(env(safe-area-inset-bottom,0px) + 20px);max-height:90vh;overflow:auto;transform:translateY(105%);transition:transform .25s}
+#sheet.open #sbox{transform:none}
+.grab{width:44px;height:5px;border-radius:3px;background:var(--line);margin:4px auto 12px}
+#sbox h3{margin:0 0 12px;font-size:19px;color:var(--dark)}
+#sbox label{display:block;font-size:13px;font-weight:700;color:var(--muted);margin:12px 0 5px}
+#sbox input[type=text],#sbox select{width:100%;padding:14px;border:2px solid var(--line);border-radius:12px;font-size:17px;background:#fff;outline:none}
+#sbox input:focus,#sbox select:focus{border-color:var(--mid)}
+.bigcode{display:block;width:100%;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:34px;font-weight:800;color:var(--dark);background:var(--pale);border:0;border-radius:14px;padding:16px;text-align:center}
+.bigcode small{display:block;font-family:-apple-system,Segoe UI,Roboto,sans-serif;font-size:12px;font-weight:600;color:var(--muted);margin-top:4px}
+.bigneed{background:var(--warn);color:var(--warnink);font-weight:800;border-radius:14px;padding:18px;text-align:center;font-size:18px}
+.chipsrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.qchip{background:var(--pale);color:var(--dark);border:0;border-radius:999px;padding:9px 14px;font-weight:700;font-size:14px}
+.qchip:active{background:var(--line)}
+.btnrow{display:flex;gap:10px;margin-top:18px}
+.btnrow .btn{flex:1}
+.btn.ghost{background:#fff;color:var(--dark);border:2px solid var(--line)}
+.danger{display:block;width:100%;background:none;border:0;color:#B00020;font-weight:700;padding:16px 0 4px;font-size:15px}
+.bigopt{display:block;width:100%;text-align:left;background:var(--pale);border:0;border-radius:14px;padding:18px;margin-top:10px;font-size:17px;font-weight:800;color:var(--dark)}
+.bigopt small{display:block;font-weight:500;color:var(--muted);font-size:13px;margin-top:3px}
+.chk{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:15px;font-weight:600}
+.chk input{width:22px;height:22px}
+#toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 24px);transform:translateX(-50%);background:var(--dark);color:#fff;padding:11px 18px;border-radius:999px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50}
+#toast.show{opacity:1}
+.menu{position:absolute;right:12px;top:calc(env(safe-area-inset-top,0px) + 58px);background:#fff;color:var(--ink);border-radius:14px;box-shadow:0 12px 36px rgba(0,0,0,.28);overflow:hidden;min-width:220px;z-index:30}
+.menu button{display:block;width:100%;text-align:left;background:none;border:0;padding:14px 16px;font-size:15px;border-bottom:1px solid #EEF3EF}
+.menu button:last-child{border-bottom:0}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 30px}
+</style>
+</head>
+<body>
+
+<section id="lock">
+  <form class="lockcard" id="lockform" autocomplete="off">
+    <div class="mark">D</div>
+    <h1>Duckett Door Codes</h1>
+    <p>Enter the passphrase to unlock</p>
+    <input id="pass" type="password" placeholder="Passphrase" autocomplete="current-password" autofocus>
+    <div id="err"></div>
+    <button class="btn" type="submit" id="unlockbtn">Unlock</button>
+  </form>
+</section>
+
+<section id="app" class="hidden">
+  <header>
+    <div class="top">
+      <div class="mark">D</div>
+      <div class="ttl"><b>Duckett Door Codes</b><span id="sub"></span></div>
+      <button class="ibtn" id="menubtn">Menu</button>
+    </div>
+    <input id="q" type="search" placeholder="Search property, door, or code" autocomplete="off">
+    <div class="chips">
+      <button class="chip on" data-f="all">All</button>
+      <button class="chip" data-f="need">Needs code</button>
+      <button class="pill hidden" id="dirty">Saving...</button>
+    </div>
+  </header>
+  <div class="menu hidden" id="menu">
+    <button id="msync">Sync now</button>
+    <button id="mpass">Change passphrase</button>
+    <button id="mlock">Lock now</button>
+  </div>
+  <main id="list"></main>
+  <footer>duckettmgmt.com</footer>
+</section>
+<button id="fab" class="hidden" aria-label="Add">+</button>
+<div id="sheet"><div id="sbox"></div></div>
+<div id="toast"></div>
+
+
+<script id="vault-seed" type="application/json">{"salt": "dMKe4w/EqEBqtdjQWTaCLA==", "iv": "7zu1edRFd9OVoJgs", "ct": "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", "iter": 1000000}</script>
+<script>
+(function(){
+const $=s=>document.querySelector(s);
+const LS='duckettVaultV2';
+const ITER=1000000;
+const enc=new TextEncoder(), dec=new TextDecoder();
+let key=null,auth=null,salt=null,iterCur=ITER,vault=null,filter='all',serverRev=0,pending=[],chain=Promise.resolve(),idleT=null,pollT=null;
+
+/* ---------- helpers ---------- */
+function b64(u8){let s='';const n=0x8000;for(let i=0;i<u8.length;i+=n)s+=String.fromCharCode.apply(null,u8.subarray(i,i+n));return btoa(s)}
+function unb64(s){const b=atob(s),u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return u}
+const hex=u8=>[...u8].map(b=>b.toString(16).padStart(2,'0')).join('');
+const uid=()=>hex(crypto.getRandomValues(new Uint8Array(4)));
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),1500)}
+function h(tag,props,...kids){
+  const e=document.createElement(tag);
+  for(const k in (props||{})){
+    if(k==='class')e.className=props[k];
+    else if(k.startsWith('on'))e.addEventListener(k.slice(2),props[k]);
+    else if(k==='value')e.value=props[k];
+    else e.setAttribute(k,props[k]);
+  }
+  kids.flat().forEach(c=>{if(c!=null)e.append(c.nodeType?c:document.createTextNode(c))});
+  return e;
+}
+
+/* ---------- crypto: one PBKDF2 run gives an encryption key and a separate write token ---------- */
+async function derive(pass,saltBytes,iter){
+  const base=await crypto.subtle.importKey('raw',enc.encode(pass),'PBKDF2',false,['deriveBits']);
+  const bits=new Uint8Array(await crypto.subtle.deriveBits({name:'PBKDF2',salt:saltBytes,iterations:iter,hash:'SHA-256'},base,512));
+  const k=await crypto.subtle.importKey('raw',bits.slice(0,32),'AES-GCM',false,['encrypt','decrypt']);
+  return {k,auth:hex(bits.slice(32))};
+}
+async function openEnv(env,pass){
+  const s=unb64(env.salt);const d=await derive(pass,s,env.iter);
+  const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:unb64(env.iv)},d.k,unb64(env.ct));
+  return {k:d.k,auth:d.auth,s,iter:env.iter,data:JSON.parse(dec.decode(pt))};
+}
+async function openWithKey(env){
+  if(env.salt!==b64(salt))throw new Error('salt');
+  const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:unb64(env.iv)},key,unb64(env.ct));
+  return JSON.parse(dec.decode(pt));
+}
+async function sealWith(k,s,iter,data){
+  const iv=crypto.getRandomValues(new Uint8Array(12));
+  const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},k,enc.encode(JSON.stringify(data)));
+  return {salt:b64(s),iv:b64(iv),ct:b64(new Uint8Array(ct)),iter};
+}
+
+/* ---------- server ---------- */
+async function apiGet(since){
+  const r=await fetch('/api/vault'+(since!=null?'?since='+since:''),{cache:'no-store'});
+  if(r.status===404)return {empty:true};
+  if(!r.ok)throw new Error('http '+r.status);
+  return r.json();
+}
+async function apiPut(env,baseRev,newAuth,token){
+  const r=await fetch('/api/vault',{method:'PUT',headers:{'content-type':'application/json','x-auth':token},body:JSON.stringify({envelope:env,baseRev,newAuth:newAuth||undefined})});
+  let j={};try{j=await r.json()}catch(e){}
+  return Object.assign({status:r.status},j);
+}
+const cacheGet=()=>{try{return JSON.parse(localStorage.getItem(LS))}catch(e){return null}};
+const cacheSet=env=>{try{localStorage.setItem(LS,JSON.stringify(env))}catch(e){}};
+
+/* ---------- sync status ---------- */
+function setSync(state){
+  const p=$('#dirty');
+  if(state==='ok'){p.classList.add('hidden');return}
+  p.classList.remove('hidden');
+  p.textContent=state==='saving'?'Saving...':'Not synced. Tap to retry';
+}
+$('#dirty').addEventListener('click',()=>{toast('Retrying');chain=chain.then(flush)});
+
+async function flush(){
+  if(!vault||!key)return;
+  for(let i=0;i<6;i++){
+    const batch=pending.slice();
+    let env;
+    try{env=await sealWith(key,salt,iterCur,vault)}catch(e){return}
+    let r;
+    try{r=await apiPut(env,serverRev,null,auth)}catch(e){setSync('offline');return}
+    if(r.status===200&&r.ok){
+      serverRev=r.rev;pending=pending.filter(f=>!batch.includes(f));cacheSet(Object.assign({},env,{rev:r.rev}));
+      setSync(pending.length?'saving':'ok');return;
+    }
+    if(r.status===409&&r.envelope){
+      try{vault=await openWithKey(r.envelope)}catch(e){lockWith('The passphrase was changed. Unlock again with the new one.');return}
+      serverRev=r.envelope.rev;pending.forEach(f=>f(vault));render();continue;
+    }
+    if(r.status===401){lockWith('The passphrase was changed. Unlock again with the new one.');return}
+    setSync('offline');return;
+  }
+  setSync('offline');
+}
+function mutate(fn){
+  fn(vault);pending.push(fn);render();setSync('saving');
+  chain=chain.then(flush);return chain;
+}
+async function poll(){
+  if(!key||!vault)return;
+  if(pending.length){chain=chain.then(flush);return}
+  if($('#sheet').classList.contains('open'))return;
+  try{
+    const g=await apiGet(serverRev);
+    if(g.unchanged||g.empty||!g.envelope||g.envelope.rev===serverRev)return;
+    try{vault=await openWithKey(g.envelope)}catch(e){lockWith('The passphrase was changed. Unlock again with the new one.');return}
+    serverRev=g.envelope.rev;cacheSet(g.envelope);render();toast('Updated');
+  }catch(e){}
+}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')poll()});
+window.addEventListener('online',()=>{if(pending.length)chain=chain.then(flush);else poll()});
+
+/* ---------- unlock / lock ---------- */
+$('#lockform').addEventListener('submit',async ev=>{
+  ev.preventDefault();
+  const pass=$('#pass').value;if(!pass)return;
+  const btn=$('#unlockbtn');btn.textContent='Unlocking...';$('#err').textContent='';
+  let remote=null,netFail=false;
+  try{const g=await apiGet();remote=g.empty?null:g.envelope}catch(e){netFail=true}
+  const seed=JSON.parse($('#vault-seed').textContent);
+  let res=null,src=null,rev=0;
+  const attempt=async(env,name,r)=>{try{res=await openEnv(env,pass);src=name;rev=r;return true}catch(e){return false}};
+  if(remote)await attempt(remote,'remote',remote.rev);
+  else if(netFail){const c=cacheGet();if(!(c&&await attempt(c,'cache',c.rev||0)))await attempt(seed,'seed',0)}
+  else await attempt(seed,'seed',0);
+  btn.textContent='Unlock';
+  if(!res){$('#err').textContent='That passphrase did not work. Try again.';return}
+  key=res.k;auth=res.auth;salt=res.s;iterCur=res.iter;vault=res.data;serverRev=rev;pending=[];
+  $('#pass').value='';
+  $('#lock').classList.add('hidden');$('#app').classList.remove('hidden');$('#fab').classList.remove('hidden');
+  render();bumpIdle();
+  clearInterval(pollT);pollT=setInterval(poll,20000);
+  if(src==='seed'&&!netFail){setSync('saving');chain=chain.then(flush)}   // first run: publish starting data
+  else if(netFail){toast(src==='seed'?'Offline. Showing starting data.':'Offline. Showing last saved codes.');setSync('offline')}
+});
+function lockNow(){
+  key=null;auth=null;vault=null;pending=[];clearInterval(pollT);
+  $('#menu').classList.add('hidden');closeSheet();
+  $('#list').textContent='';$('#q').value='';setSync('ok');
+  $('#app').classList.add('hidden');$('#fab').classList.add('hidden');$('#lock').classList.remove('hidden');
+  $('#pass').focus();
+}
+function lockWith(msg){lockNow();$('#err').textContent=msg}
+function bumpIdle(){clearTimeout(idleT);idleT=setTimeout(()=>{if(key)lockNow()},5*60*1000)}
+['click','keydown','touchstart','scroll'].forEach(e=>document.addEventListener(e,()=>{if(key)bumpIdle()},{passive:true}));
+
+/* ---------- data helpers ---------- */
+const needs=d=>!d.code||!d.code.trim()||d.code.trim().toUpperCase()==='RESET';
+const stateText=d=>(d.code&&d.code.trim().toUpperCase()==='RESET')?'RESET':'NEEDS CODE';
+const STD=['Lockbox','Front','Back','Unit A','Unit B','Deck, 1st Floor','Deck, 2nd Floor'];
+const CHIPS=['Lockbox','Front','Back','Basement','Unit A','Unit B','Unit C','Deck, 1st Floor','Deck, 2nd Floor','Gate'];
+function rank(l){l=l.toLowerCase();
+  if(l.startsWith('lockbox'))return 0;if(l.startsWith('front'))return 1;if(l.startsWith('back'))return 2;if(l.startsWith('basement'))return 3;
+  if(l.startsWith('unit'))return 4+(l.slice(-1).charCodeAt(0)%100)/1000;
+  if(l.startsWith('deck')){if(l.includes('1st'))return 7;if(l.includes('2nd'))return 8;if(l.includes('3rd'))return 9;return 7.5}
+  if(l.startsWith('gate'))return 10;return 11}
+const sortDoors=p=>p.doors.sort((a,b)=>rank(a.label)-rank(b.label));
+const P=(v,id)=>v.properties.find(x=>x.id===id);
+function match(d,p,q){q=q.toLowerCase();
+  return (d.label+' '+d.code+' '+(d.note||'')).toLowerCase().includes(q)||p.name.toLowerCase().includes(q)}
+
+/* ---------- sheets ---------- */
+function closeSheet(){const s=$('#sheet');s.classList.remove('open');setTimeout(()=>{if(!s.classList.contains('open'))$('#sbox').textContent=''},260)}
+function openSheet(title,...nodes){
+  const box=$('#sbox');box.textContent='';
+  box.append(h('div',{class:'grab'}),h('h3',null,title),...nodes);
+  $('#sheet').classList.add('open');
+}
+$('#sheet').addEventListener('click',e=>{if(e.target.id==='sheet')closeSheet()});
+const field=(lab,input)=>h('div',null,h('label',null,lab),input);
+const tin=(v,ph)=>h('input',{type:'text',value:v||'',placeholder:ph||'',autocomplete:'off',autocapitalize:'none',spellcheck:'false'});
+
+function doorSheet(p,d){
+  const pid=p.id,did=d.id;
+  const lab=tin(d.label,'Door'),code=tin(d.code,'Code'),note=tin(d.note,'Optional note');
+  const top=needs(d)?h('div',{class:'bigneed'},stateText(d)):
+    h('button',{class:'bigcode',onclick:()=>copy(d.code)},d.code,h('small',null,'Tap to copy'));
+  openSheet(p.name,top,field('Door',lab),field(needs(d)?'Enter the code here':'Code',code),field('Note',note),
+    h('div',{class:'btnrow'},
+      h('button',{class:'btn ghost',onclick:closeSheet},'Cancel'),
+      h('button',{class:'btn',onclick:()=>{
+        const vals={label:lab.value.trim()||d.label,code:code.value.trim(),note:note.value.trim()};
+        closeSheet();mutate(v=>{const pp=P(v,pid),dd=pp&&pp.doors.find(x=>x.id===did);if(dd)Object.assign(dd,vals)});toast('Saved')}},'Save')),
+    h('button',{class:'danger',onclick:()=>{if(confirm('Remove '+d.label+' from '+p.name+'?')){closeSheet();mutate(v=>{const pp=P(v,pid);if(pp)pp.doors=pp.doors.filter(x=>x.id!==did)})}}},'Remove this door'));
+  if(needs(d))setTimeout(()=>{code.focus();code.select()},300);
+}
+function addDoorSheet(pre){
+  const sel=h('select',null,...vault.properties.map(p=>h('option',{value:p.id},p.name)));
+  if(pre)sel.value=pre.id;
+  const lab=tin('','Door name'),code=tin('','Code'),note=tin('','Optional note');
+  const chips=h('div',{class:'chipsrow'},...CHIPS.map(c=>h('button',{type:'button',class:'qchip',onclick:()=>{lab.value=c;code.focus()}},c)));
+  openSheet('Add a door',field('Property',sel),h('div',null,h('label',null,'Door'),lab,chips),field('Code',code),field('Note',note),
+    h('div',{class:'btnrow'},
+      h('button',{class:'btn ghost',onclick:closeSheet},'Cancel'),
+      h('button',{class:'btn',onclick:()=>{
+        const name=lab.value.trim();if(!name){lab.focus();return}
+        const pid=sel.value,nid=uid(),door={id:nid,label:name,code:code.value.trim(),note:note.value.trim()};
+        const pn=P(vault,pid).name;
+        closeSheet();
+        mutate(v=>{const pp=P(v,pid);if(pp&&!pp.doors.some(x=>x.id===nid)){pp.doors.push(Object.assign({},door));sortDoors(pp)}});
+        toast('Added to '+pn)}},'Add')));
+}
+function addPropSheet(){
+  const name=tin('','Example: 1234 Main St'),std=h('input',{type:'checkbox',checked:'checked'});
+  openSheet('Add a property',field('Property name',name),
+    h('label',{class:'chk'},std,'Start with the standard doors'),
+    h('p',{style:'margin:8px 0 0;color:var(--muted);font-size:13px'},'Lockbox, Front, Back, Unit A, Unit B, Deck 1st Floor, Deck 2nd Floor. Remove any you do not need.'),
+    h('div',{class:'btnrow'},
+      h('button',{class:'btn ghost',onclick:closeSheet},'Cancel'),
+      h('button',{class:'btn',onclick:()=>{
+        const n=name.value.trim();if(!n){name.focus();return}
+        const prop={id:uid(),name:n,doors:std.checked?STD.map(l=>({id:uid(),label:l,code:'',note:''})):[]};
+        closeSheet();
+        mutate(v=>{if(!v.properties.some(x=>x.id===prop.id))v.properties.push(JSON.parse(JSON.stringify(prop)))});
+        toast('Property added');
+        setTimeout(()=>{const c=[...document.querySelectorAll('.card h2')].find(x=>x.textContent===n);if(c)c.scrollIntoView({behavior:'smooth',block:'center'})},100)}},'Add')));
+  setTimeout(()=>name.focus(),300);
+}
+function propSheet(p){
+  const pid=p.id,name=tin(p.name,'Property name');
+  openSheet('Property',field('Name',name),
+    h('div',{class:'btnrow'},
+      h('button',{class:'btn ghost',onclick:closeSheet},'Cancel'),
+      h('button',{class:'btn',onclick:()=>{const n=name.value.trim();if(n){closeSheet();mutate(v=>{const pp=P(v,pid);if(pp)pp.name=n});toast('Saved')}}},'Save')),
+    h('button',{class:'danger',onclick:()=>{if(confirm('Delete '+p.name+' and all its doors?')){closeSheet();mutate(v=>{v.properties=v.properties.filter(x=>x.id!==pid)})}}},'Delete this property'));
+}
+$('#fab').addEventListener('click',()=>{
+  openSheet('Add',
+    h('button',{class:'bigopt',onclick:()=>addDoorSheet(null)},'Add a door',h('small',null,'A new code for a property you already have')),
+    h('button',{class:'bigopt',onclick:addPropSheet},'Add a property',h('small',null,'A new building with its doors')));
+});
+
+/* ---------- render ---------- */
+function render(){
+  if(!vault)return;
+  const q=$('#q').value.trim();
+  const list=$('#list');list.textContent='';
+  let open=0;
+  vault.properties.forEach(p=>p.doors.forEach(d=>{if(needs(d))open++}));
+  $('#sub').textContent=vault.properties.length+' properties, '+open+' codes needed';
+  let shown=0;
+  vault.properties.forEach(p=>{
+    let doors=p.doors;
+    if(q){const nameHit=p.name.toLowerCase().includes(q.toLowerCase());if(!nameHit)doors=doors.filter(d=>match(d,p,q))}
+    if(filter==='need')doors=doors.filter(needs);
+    if(!doors.length&&(q||filter==='need'||p.doors.length))return;
+    shown++;
+    const openN=p.doors.filter(needs).length;
+    const card=h('div',{class:'card'},h('div',{class:'chead'},
+      h('h2',null,p.name),
+      openN?h('span',{class:'badge'},openN+' needed'):null,
+      h('button',{class:'plus','aria-label':'Add door to '+p.name,onclick:()=>addDoorSheet(p)},'+'),
+      h('button',{class:'dots','aria-label':'Property options',onclick:()=>propSheet(p)},'\u22EF')));
+    doors.forEach(d=>{
+      const right=needs(d)?h('span',{class:'need'},stateText(d)):
+        h('button',{class:'code',onclick:e=>{e.stopPropagation();copy(d.code)}},d.code);
+      card.append(h('div',{class:'row',onclick:()=>doorSheet(p,d)},
+        h('div',{class:'l'},h('b',null,d.label),d.note?h('small',null,d.note):null),right,h('span',{class:'chev'},'\u203A')));
+    });
+    if(!doors.length)card.append(h('div',{class:'row'},h('div',{class:'l'},h('small',null,'No doors yet. Tap the plus to add one.'))));
+    list.append(card);
+  });
+  if(!shown)list.append(h('div',{class:'empty'},q?'Nothing matches that search.':'Nothing here.'));
+}
+async function copy(t){try{await navigator.clipboard.writeText(t);toast('Copied '+t)}catch(e){toast(t)}}
+
+/* ---------- wiring ---------- */
+$('#q').addEventListener('input',render);
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{
+  filter=c.dataset.f;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===c));render()}));
+$('#menubtn').addEventListener('click',e=>{e.stopPropagation();$('#menu').classList.toggle('hidden')});
+document.addEventListener('click',e=>{if(!e.target.closest('#menu'))$('#menu').classList.add('hidden')});
+$('#mlock').addEventListener('click',lockNow);
+$('#msync').addEventListener('click',async()=>{$('#menu').classList.add('hidden');toast('Syncing');
+  if(pending.length)chain=chain.then(flush);else await poll();});
+$('#mpass').addEventListener('click',async()=>{
+  $('#menu').classList.add('hidden');
+  const np=prompt('New passphrase (at least 8 characters). Everyone will need the new one.');
+  if(!np)return;
+  if(np.length<8){alert('Please use at least 8 characters.');return}
+  if(prompt('Type it again to confirm')!==np){alert('They did not match.');return}
+  toast('Changing passphrase');
+  try{
+    await chain;
+    const s=crypto.getRandomValues(new Uint8Array(16));
+    const d=await derive(np,s,ITER);
+    const env=await sealWith(d.k,s,ITER,vault);
+    const r=await apiPut(env,serverRev,d.auth,auth);
+    if(r.status===200&&r.ok){key=d.k;auth=d.auth;salt=s;iterCur=ITER;serverRev=r.rev;cacheSet(Object.assign({},env,{rev:r.rev}));toast('Passphrase changed. Share the new one with Brandon.')}
+    else alert('Could not change it right now. Sync first, then try again.');
+  }catch(e){alert('Could not change it. Check your connection.')}
+});
+})();
+</script>
+</body>
+</html>
